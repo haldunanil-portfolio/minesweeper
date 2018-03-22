@@ -51,7 +51,7 @@ export class Board {
 	}
 
 	hasSafeTiles() {
-		return this._numberOfTiles === this._numberOfBombs;
+		return this._numberOfTiles !== this._numberOfBombs;
 	}
 
 
@@ -62,9 +62,9 @@ export class Board {
 
 	static generatePlayerBoard(numberOfRows, numberOfColumns) {
 		let board = [];
-		for (let row = 0; row < numberOfRows; row++) {
+		for (let rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
 			let row = [];
-			for (let col = 0; col < numberOfColumns; col++) {
+			for (let colIndex = 0; colIndex < numberOfColumns; colIndex++) {
 				row.push(' ');
 			}
 			board.push(row);
@@ -74,9 +74,9 @@ export class Board {
 
 	static generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs) {
 		let board = [];
-		for (let row = 0; row < numberOfRows; row++) {
+		for (let rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
 			let row = [];
-			for (let col = 0; col < numberOfColumns; col++) {
+			for (let colIndex = 0; colIndex < numberOfColumns; colIndex++) {
 				row.push(null);
 			}
 			board.push(row);
@@ -93,8 +93,6 @@ export class Board {
 			if (board[randomRowIndex][randomColIndex] !== 'B') {
 				board[randomRowIndex][randomColIndex] = 'B';  // place a bomb
 				numberOfBombsPlaced++;  // increment
-			} else {
-				// do nothing
 			}
 		}
 
