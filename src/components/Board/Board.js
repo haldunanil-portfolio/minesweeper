@@ -10,6 +10,14 @@ export class Board {
 		return this._playerBoard;
 	}
 
+	get bombBoard() {
+		return this._bombBoard;
+	}
+
+	get numberOfBombs() {
+		return this._numberOfBombs;
+	}
+
 	flipTile(rowIndex, columnIndex) {
 		if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
 			console.log('This tile has already been flipped!');
@@ -20,7 +28,7 @@ export class Board {
 			this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighborBombs(rowIndex, columnIndex);
 		}
 		this._numberOfTiles--;
-	}	
+	}
 
 	getNumberOfNeighborBombs(rowIndex, columnIndex){
 		const neighborOffsets = [
@@ -38,7 +46,7 @@ export class Board {
 			const neighborColumnIndex = columnIndex + offset[1];
 
 			// check if the above indices are valid (i.e. not off the board)
-			if (neighborRowIndex >= 0 && neighborRowIndex <= numberOfRows && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns) {
+			if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns) {
 				// check if bomb exists and increment total count if yes
 				if (this._bombBoard[neighborRowIndex][neighborColumnIndex] === 'B') {
 					numberOfBombs++;
@@ -51,9 +59,8 @@ export class Board {
 	}
 
 	hasSafeTiles() {
-		return this._numberOfTiles !== this._numberOfBombs;
+		return Number(this._numberOfTiles) !== Number(this._numberOfBombs);
 	}
-
 
 	print() {
 		console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));

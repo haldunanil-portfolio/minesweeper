@@ -1,0 +1,103 @@
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  height: 95%;
+}
+
+h1 {
+  font-family: 'Lobster', sans-serif;
+}
+
+@media screen and (max-width: 991px) {
+  h1 {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+  }
+}
+
+body {
+  background-image: url("./michael-heuser-386763-unsplash.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+footer {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  color: #fff;
+  z-index: 999;
+  position: relative;
+  font-size: 0.65rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #fff;
+}
+
+.App {
+  height: 100%;
+  text-align: center;
+}
+
+.App-header {
+  background-color: #523F38;
+  height: 60px;
+  padding: 20px 0 20px 0;
+  color: white;
+  opacity: 0.99;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.blue {
+  color: #52D1DC;
+}
+
+.React-drawer-div {
+  width: 100%;
+  height: 100%;
+}
+
+div.react-drawer-drawer {
+  background-color: transparent;
+  box-shadow: 0 -3px 10px 0 rgba(0,0,0,0.25);
+}
+
+.isWon-false, .isWon-true {
+  padding-top: 2rem;
+}
+
+.isWon-true {
+  background-color: limegreen;
+}
+
+.isWon-false {
+  background-color: orangered;
+}
+
+h2 {
+  font-family: 'Lobster', sans-serif;
+  color: white;
+  text-shadow: 0 3px 5px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.isWon-true h2 {
+  font-size: 4rem;
+}
+
+.isWon-false h2 {
+  font-size: 2rem;
+}
