@@ -1,9 +1,32 @@
+body,
+html,
+#root {
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Lobster', sans-serif;
+}
+
+@media screen and (max-width: 991px) {
+  h1 {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+  }
+}
+
 .App {
+  height: 100%;
+  background-image: url("./michael-heuser-386763-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #523F38;
   height: 60px;
   padding: 20px;
   color: white;
@@ -14,5 +37,5 @@
 }
 
 .blue {
-  color: deepskyblue;
+  color: #52D1DC;
 }
