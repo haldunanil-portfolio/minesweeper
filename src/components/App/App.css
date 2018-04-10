@@ -1,7 +1,10 @@
 body,
-html,
+html {
+  height: 100%;
+}
+
 #root {
-  height: 99%;
+  height: 95%;
 }
 
 h1 {
@@ -19,8 +22,9 @@ h1 {
 body {
   background-image: url("./michael-heuser-386763-unsplash.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
@@ -28,7 +32,8 @@ footer {
   text-align: center;
   font-family: "Lato", sans-serif;
   color: #fff;
-  margin-bottom: 20px;
+  z-index: 999;
+  position: relative;
   font-size: 0.65rem;
   text-shadow: 0 1px 3px rgba(0,0,0,0.25);
 }

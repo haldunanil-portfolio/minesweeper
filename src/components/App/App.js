@@ -12,16 +12,22 @@ class App extends Component {
     super(props);
     this.state = {
       sideLength: null,
+      difficulty: "",
       board: null,
       isPlaying: null,
       isFinished: false,
       didWin: null
     };
+    this.changeDifficulty = this.changeDifficulty.bind(this);
     this.newGame = this.newGame.bind(this);
     this.tryAgain = this.tryAgain.bind(this);
     this.handleFlipTile = this.handleFlipTile.bind(this);
     this.playMove = this.playMove.bind(this);
     this.onDrawerClose = this.onDrawerClose.bind(this);
+  }
+
+  changeDifficulty(level) {
+    this.setState({ difficulty: level });
   }
 
   newGame(sideLength, numberOfBombs) {
@@ -82,13 +88,11 @@ class App extends Component {
         console.log(this.state.board.bombBoard);
         this.state.board.bombBoard.forEach((row, i) => {
           row.forEach((col, j) => {
-            if (col === 'B') {
+            if (col === "B") {
               this.handleFlipTile(i, j);
             }
           });
         });
-
-
       } else {
         // continue playing
         console.log("Keep playing!");
@@ -110,8 +114,16 @@ class App extends Component {
             Minesweepe<span className="blue">React</span>
           </h1>
         </header>
-        <Setup onClick={this.newGame} />
-        <GameGrid board={this.state.board} playMove={this.playMove} didWin={this.state.didWin} />
+        <Setup
+          changeDifficulty={this.changeDifficulty}
+          difficulty={this.state.difficulty}
+          onClick={this.newGame}
+        />
+        <GameGrid
+          board={this.state.board}
+          playMove={this.playMove}
+          didWin={this.state.didWin}
+        />
         <ReactDrawer
           open={this.state.isFinished}
           onClose={this.onDrawerClose}
