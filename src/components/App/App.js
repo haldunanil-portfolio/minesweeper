@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import ReactDrawer from "react-drawer";
 import "./App.css";
+import "react-drawer/lib/react-drawer.css";
 
 import Setup from "../Setup/Setup";
 import GameGrid from "../GameGrid/GameGrid";
@@ -12,19 +14,36 @@ class App extends Component {
       sideLength: null,
       board: null,
       isPlaying: null,
+      isFinished: null,
       isWon: null
     };
-    this.handleSideLengthChange = this.handleSideLengthChange.bind(this);
+    this.newGame = this.newGame.bind(this);
+    this.tryAgain = this.tryAgain.bind(this);
     this.handleFlipTile = this.handleFlipTile.bind(this);
     this.playMove = this.playMove.bind(this);
+    this.onDrawerClose = this.onDrawerClose.bind(this);
   }
 
-  handleSideLengthChange(value) {
+  newGame(sideLength, numberOfBombs) {
+    const firstPlay = this.state.board === null;
+
     this.setState({
-      sideLength: value,
-      board: new Board(value, value, value),
-      isPlaying: true
+      sideLength: sideLength,
+      board: new Board(sideLength, sideLength, numberOfBombs),
+      isPlaying: true,
+      isFinished: false
     });
+
+    // wait 5 seconds before resetting win/lose status to make sure css for drawer keeps looking pretty
+    setTimeout(callback => {
+      if (!firstPlay && !this.state.isPlaying && !this.state.isFinished) {
+        this.setState({ isWon: null });
+      }
+    }, 5000);
+  }
+
+  tryAgain() {
+    this.newGame(this.state.sideLength, this.state.board.numberOfBombs);
   }
 
   handleFlipTile(rowIndex, colIndex) {
@@ -36,30 +55,40 @@ class App extends Component {
   }
 
   playMove(rowIndex, columnIndex) {
-    if (this.state.isPlaying && !this.state.isWon) {
-      console.log(rowIndex + ", " + columnIndex);
+    if (this.state.isPlaying) {
+      // flip tile
       this.handleFlipTile(rowIndex, columnIndex);
+      console.log("Current board: ");
+      this.state.board.print();
+      console.log(this.state.board.hasSafeTiles());
 
+      // losing condition
       if (this.state.board.playerBoard[rowIndex][columnIndex] === "B") {
         console.log("Game over!");
-        this.state.board.print();
         this.setState({
           isWon: false,
+          isFinished: true,
           isPlaying: false
         });
       } else if (this.state.board.hasSafeTiles() === false) {
+        // winning condition
         console.log("You won!");
         this.setState({
           isWon: true,
+          isFinished: true,
           isPlaying: false
         });
       } else {
-        console.log("Current board: ");
-        this.state.board.print();
+        // continue playing
+        console.log("Keep playing!");
       }
     } else {
       console.log("Game over! Press 'New Game' to start over.");
     }
+  }
+
+  onDrawerClose() {
+    this.setState({ isFinished: false });
   }
 
   render() {
@@ -70,8 +99,22 @@ class App extends Component {
             Minesweepe<span className="blue">React</span>
           </h1>
         </header>
-        <Setup onClick={this.handleSideLengthChange} />
+        <Setup onClick={this.newGame} />
         <GameGrid board={this.state.board} playMove={this.playMove} />
+        <ReactDrawer
+          open={this.state.isFinished}
+          onClose={this.onDrawerClose}
+          position="bottom"
+          noOverlay={true}
+        >
+          <div className={"React-drawer-div isWon-" + this.state.isWon}>
+            <h2 onClick={this.tryAgain}>
+              {this.state.isWon
+                ? "You won! Click here to play again!"
+                : "You lost. :( Click here to try again!"}
+            </h2>
+          </div>
+        </ReactDrawer>
       </div>
     );
   }

@@ -34,7 +34,7 @@ class GameGrid extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col sm={6} xl={4} offset={{ sm: 3, xl: 4 }}>
+          <Col sm={6} xl={4.5} offset={{ sm: 3, xl: 3.75 }}>
             {this.props.board ? this.drawBoard() : null}
           </Col>
         </Row>

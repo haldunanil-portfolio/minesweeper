@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Tile.css";
+import explodedBomb from './exploded-bomb.png';
+import safeBomb from './safe-bomb.png';
 
 class Tile extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class Tile extends Component {
     const addClass = this.props.playerBoardElement;
     return (
       <div className={"Tile Tile-" + addClass} onClick={this.handleFlipTile}>
-        <div className="Tile-content">{this.props.playerBoardElement}</div>
+        <div className="Tile-content">{this.props.playerBoardElement === 'B' ? <img className="Tile-bomb-img" src={explodedBomb} alt="bomb"/> : this.props.playerBoardElement}</div>
       </div>
     );
   }

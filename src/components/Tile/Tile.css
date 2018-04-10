@@ -10,6 +10,7 @@
     transition: all 0.3s ease-in-out;
     font-family: "Lato", sans-serif;
     font-size: 1.5em;
+    cursor: pointer;
 }
 
 .Tile-0 {
@@ -44,21 +45,21 @@
 
 .Tile-6 {
     background-color: darkorange;
-    color: #4C5454;
+    color: #fff;
 }
 
 .Tile-7 {
-    background-color: orangered;
+    background-color: indianred;
     color: #fff;
 }
 
 .Tile-8 {
-    background-color: red;
+    background-color: #ff3338;
     color: #fff;
 }
 
 .Tile-B {
-    background-color: #4C5454;
+    background-color: orangered;
     color: #fff;
 }
 
@@ -84,4 +85,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+img.Tile-bomb-img {
+    width: 100%;
 }

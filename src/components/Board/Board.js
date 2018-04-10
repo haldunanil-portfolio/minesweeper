@@ -10,6 +10,10 @@ export class Board {
 		return this._playerBoard;
 	}
 
+	get numberOfBombs() {
+		return this._numberOfBombs;
+	}
+
 	flipTile(rowIndex, columnIndex) {
 		if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
 			console.log('This tile has already been flipped!');
@@ -51,9 +55,8 @@ export class Board {
 	}
 
 	hasSafeTiles() {
-		return this._numberOfTiles !== this._numberOfBombs;
+		return Number(this._numberOfTiles) !== Number(this._numberOfBombs);
 	}
-
 
 	print() {
 		console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));
