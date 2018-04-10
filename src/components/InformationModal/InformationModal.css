@@ -1,0 +1,63 @@
+div.ReactModalPortal div.ReactModal__Overlay div.ReactModal__Content {
+  background-color: #523f38 !important;
+  border: #523f38 !important;
+  z-index: 99999;
+  box-shadow: 0 3px 10px 5px rgba(0, 0, 0, 0.25);
+  text-align: center;
+
+  width: 350px;
+  height: 550px;
+
+  position: absolute; /*it can be fixed too*/
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  margin: auto;
+
+  /*this to solve "the content will not be cut when the window is smaller than the content": */
+  max-width: 70%;
+  max-height: 85%;
+  overflow: auto;
+}
+
+h2 {
+  font-family: "Lobster", sans-serif;
+  color: white;
+  font-size: 2rem;
+  margin: 15px;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+.Modal-screen-close {
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  padding: 0.8rem;
+  color: black;
+  transition: background-color 0.25s;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.Modal-screen-close:hover {
+  color: #fff;
+  border-color: transparent;
+  background-color: #ff715b;
+}
+
+@media screen and (min-width: 500px) {
+  h2 {
+    margin: 30px;
+  }
+
+  .Modal-screen-close {
+    margin-top: 40px;
+  }
+}

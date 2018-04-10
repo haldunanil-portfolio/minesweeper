@@ -6,6 +6,9 @@ import "react-drawer/lib/react-drawer.css";
 import Setup from "../Setup/Setup";
 import GameGrid from "../GameGrid/GameGrid";
 import { Board } from "../Board/Board";
+import InformationModal from "../InformationModal/InformationModal";
+
+import { GoQuestion } from "react-icons/lib/go";
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +19,8 @@ class App extends Component {
       board: null,
       isPlaying: null,
       isFinished: false,
-      didWin: null
+      didWin: null,
+      modalIsOpen: false
     };
     this.changeDifficulty = this.changeDifficulty.bind(this);
     this.newGame = this.newGame.bind(this);
@@ -24,6 +28,8 @@ class App extends Component {
     this.handleFlipTile = this.handleFlipTile.bind(this);
     this.playMove = this.playMove.bind(this);
     this.onDrawerClose = this.onDrawerClose.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   changeDifficulty(level) {
@@ -106,12 +112,21 @@ class App extends Component {
     this.setState({ isFinished: false });
   }
 
+  handleOpenModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ modalIsOpen: false });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">
-            Minesweepe<span className="blue">React</span>
+            Minesweepe<span className="blue">React</span>{" "}
+            <GoQuestion onClick={this.handleOpenModal} />
           </h1>
         </header>
         <Setup
@@ -138,6 +153,8 @@ class App extends Component {
             </h2>
           </div>
         </ReactDrawer>
+        <InformationModal isOpen={this.state.modalIsOpen} handleClose={this.handleCloseModal} />
+
       </div>
     );
   }
