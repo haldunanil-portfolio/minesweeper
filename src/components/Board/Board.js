@@ -10,6 +10,10 @@ export class Board {
 		return this._playerBoard;
 	}
 
+	get bombBoard() {
+		return this._bombBoard;
+	}
+
 	get numberOfBombs() {
 		return this._numberOfBombs;
 	}

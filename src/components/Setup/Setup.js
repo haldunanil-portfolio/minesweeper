@@ -16,7 +16,7 @@ class Setup extends Component {
   }
 
   startEasyGame() {
-    this.startNewGame(5, 1);
+    this.startNewGame(5, 5);
   }
 
   startNormalGame() {

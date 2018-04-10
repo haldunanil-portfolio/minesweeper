@@ -58,9 +58,12 @@
     color: #fff;
 }
 
-.Tile-B {
+.Tile-B-true {
+    background-color: #52D1DC;
+}
+
+.Tile-B-false {
     background-color: orangered;
-    color: #fff;
 }
 
 .Tile:hover {

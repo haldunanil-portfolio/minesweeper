@@ -14,8 +14,8 @@ class App extends Component {
       sideLength: null,
       board: null,
       isPlaying: null,
-      isFinished: null,
-      isWon: null
+      isFinished: false,
+      didWin: null
     };
     this.newGame = this.newGame.bind(this);
     this.tryAgain = this.tryAgain.bind(this);
@@ -37,7 +37,7 @@ class App extends Component {
     // wait 5 seconds before resetting win/lose status to make sure css for drawer keeps looking pretty
     setTimeout(callback => {
       if (!firstPlay && !this.state.isPlaying && !this.state.isFinished) {
-        this.setState({ isWon: null });
+        this.setState({ didWin: null });
       }
     }, 5000);
   }
@@ -60,13 +60,12 @@ class App extends Component {
       this.handleFlipTile(rowIndex, columnIndex);
       console.log("Current board: ");
       this.state.board.print();
-      console.log(this.state.board.hasSafeTiles());
 
       // losing condition
       if (this.state.board.playerBoard[rowIndex][columnIndex] === "B") {
         console.log("Game over!");
         this.setState({
-          isWon: false,
+          didWin: false,
           isFinished: true,
           isPlaying: false
         });
@@ -74,10 +73,22 @@ class App extends Component {
         // winning condition
         console.log("You won!");
         this.setState({
-          isWon: true,
+          didWin: true,
           isFinished: true,
           isPlaying: false
         });
+
+        // flip all remaining tiles by using the bomb board
+        console.log(this.state.board.bombBoard);
+        this.state.board.bombBoard.forEach((row, i) => {
+          row.forEach((col, j) => {
+            if (col === 'B') {
+              this.handleFlipTile(i, j);
+            }
+          });
+        });
+
+
       } else {
         // continue playing
         console.log("Keep playing!");
@@ -100,16 +111,16 @@ class App extends Component {
           </h1>
         </header>
         <Setup onClick={this.newGame} />
-        <GameGrid board={this.state.board} playMove={this.playMove} />
+        <GameGrid board={this.state.board} playMove={this.playMove} didWin={this.state.didWin} />
         <ReactDrawer
           open={this.state.isFinished}
           onClose={this.onDrawerClose}
           position="bottom"
           noOverlay={true}
         >
-          <div className={"React-drawer-div isWon-" + this.state.isWon}>
+          <div className={"React-drawer-div isWon-" + this.state.didWin}>
             <h2 onClick={this.tryAgain}>
-              {this.state.isWon
+              {this.state.didWin
                 ? "You won! Click here to play again!"
                 : "You lost. :( Click here to try again!"}
             </h2>

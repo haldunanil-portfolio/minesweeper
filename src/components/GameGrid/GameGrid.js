@@ -22,6 +22,7 @@ class GameGrid extends Component {
               playMove={this.props.playMove}
               rowIndex={rowIndex}
               colIndex={colIndex}
+              didWin={this.props.didWin}
             />
           </Col>
         );
