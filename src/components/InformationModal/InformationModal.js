@@ -20,10 +20,16 @@ class InformationModal extends Component {
         <h2>How to Play</h2>
         <p>1) Select the level of difficulty you want.</p>
         <p>2) Click or tap on any tile to get started.</p>
-        <p>3) If a tile has a bomb, you lose. :(</p>
+        <p>
+          3) If a tile has a bomb, you lose. :({" "}
+          <em>
+            Hint: Right click on a tile to plant a flag so you can keep track of
+            suspected bombs!
+          </em>
+        </p>
         <p>
           4) If a tile shows a number, that tells you how many bombs are around
-          that tile (hint: there can be up to 8 bombs around any tile).
+          that tile. <em>Hint: there can be up to 8 bombs around any tile.</em>
         </p>
         <p>
           5) A tile with a number is safe! Keep on trying to find these without
