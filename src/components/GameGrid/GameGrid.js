@@ -16,7 +16,7 @@ class GameGrid extends Component {
     return playerBoard.map((row, rowIndex) => {
       const newRow = row.map((col, colIndex) => {
         return (
-          <Col key={"col_" + colIndex}>
+          <Col className="Tile-col" key={"col_" + colIndex}>
             <Tile
               playerBoardElement={playerBoard[rowIndex][colIndex]}
               playMove={this.props.playMove}

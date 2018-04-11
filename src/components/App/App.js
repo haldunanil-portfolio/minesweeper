@@ -23,7 +23,10 @@ class App extends Component {
       isFirstMove: false,
       isFinished: false,
       didWin: null,
-      modalIsOpen: false
+      modalIsOpen: false,
+      currentStartTime: null,
+      elapsedTime: null,
+      shortestRun: 999999999
     };
     this.changeDifficulty = this.changeDifficulty.bind(this);
     this.newGame = this.newGame.bind(this);
@@ -95,7 +98,11 @@ class App extends Component {
       // create a resetBoard and begin looping if loop === true
       let resetBoard;
       while (loop === true) {
-        resetBoard = new Board(this.state.sideLength, this.state.sideLength, this.state.numberOfBombs);
+        resetBoard = new Board(
+          this.state.sideLength,
+          this.state.sideLength,
+          this.state.numberOfBombs
+        );
         loop = resetBoard.bombBoard[rowIndex][colIndex] === "B";
       }
 
@@ -104,8 +111,8 @@ class App extends Component {
         newBoard = resetBoard;
       }
 
-      // set state to no longer be first move
-      this.setState({ isFirstMove: false });
+      // set state to no longer be first move and start timer
+      this.setState({ isFirstMove: false, currentStartTime: Date.now() });
     }
 
     // flip newBoard's file and set the board state
@@ -131,12 +138,20 @@ class App extends Component {
           isPlaying: false
         });
       } else if (this.state.board.hasSafeTiles() === false) {
+        // nail down elapsed time
+        const elapsedTime = Date.now() - this.state.currentStartTime;
+
         // winning condition
         console.log("You won!");
         this.setState({
           didWin: true,
           isFinished: true,
-          isPlaying: false
+          isPlaying: false,
+          elapsedTime: elapsedTime,
+          shortestRun:
+            elapsedTime < this.state.shortestRun
+              ? elapsedTime
+              : this.state.shortestRun
         });
 
         // flip all remaining tiles by using the bomb board
@@ -202,10 +217,25 @@ class App extends Component {
                 ? "You won! Click here to play again!"
                 : "You lost. :( Click here to try again!"}
             </h2>
+            {this.state.didWin ? (
+              <div className="Success-times">
+                <p className="Elapsed-time">
+                  You took {this.state.elapsedTime / 1000}s to finish this time
+                  around.
+                </p>
+                <p className="Shortest-run">
+                  Your best time is {this.state.shortestRun / 1000}s.
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </ReactDrawer>
-        <InformationModal isOpen={this.state.modalIsOpen} handleClose={this.handleCloseModal} />
-
+        <InformationModal
+          isOpen={this.state.modalIsOpen}
+          handleClose={this.handleCloseModal}
+        />
       </div>
     );
   }

@@ -57,7 +57,7 @@ class Tile extends Component {
     }
 
     return (
-      <div>
+      <div className="Tile-div">
         <ContextMenuTrigger
           id={`cmt-${this.props.rowIndex}-${this.props.colIndex}`}
         >

@@ -13,7 +13,6 @@ h1 {
 
 @media screen and (max-width: 991px) {
   h1 {
-    position: fixed;
     z-index: 999;
     width: 100%;
   }
@@ -97,8 +96,16 @@ h2 {
   cursor: pointer;
 }
 
-.isWon-true h2 {
-  font-size: 4rem;
+@media screen and (max-width: 991px) {
+  .isWon-true h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .isWon-true h2 {
+    font-size: 4rem;
+  }
 }
 
 .isWon-false h2 {

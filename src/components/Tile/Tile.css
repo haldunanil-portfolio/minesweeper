@@ -1,3 +1,7 @@
+div.Tile-col {
+    padding: 0 5px 0 5px !important;
+}
+
 .Tile {
     background-color: #ffffff;
     width: 100%;
