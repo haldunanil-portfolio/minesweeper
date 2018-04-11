@@ -8,7 +8,7 @@ html {
 }
 
 h1 {
-  font-family: 'Lobster', sans-serif;
+  font-family: "Lobster", sans-serif;
 }
 
 @media screen and (max-width: 991px) {
@@ -27,14 +27,17 @@ body {
   background-attachment: fixed;
 }
 
-
 footer {
   text-align: center;
   font-family: "Lato", sans-serif;
   color: #fff;
-  position: relative;
   font-size: 0.65rem;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  flex: 0 0 50px; /*or just height:50px;*/
+  position: static;
+  bottom: 0;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 footer a {
@@ -49,7 +52,7 @@ footer a {
 }
 
 .App-header {
-  background-color: #523F38;
+  background-color: #523f38;
   height: 60px;
   padding: 20px 0 20px 0;
   color: white;
@@ -61,7 +64,7 @@ footer a {
 }
 
 .blue {
-  color: #52D1DC;
+  color: #52d1dc;
 }
 
 .React-drawer-div {
@@ -71,10 +74,11 @@ footer a {
 
 div.react-drawer-drawer {
   background-color: transparent;
-  box-shadow: 0 -3px 10px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
-.isWon-false, .isWon-true {
+.isWon-false,
+.isWon-true {
   padding-top: 2rem;
 }
 
@@ -87,9 +91,9 @@ div.react-drawer-drawer {
 }
 
 h2 {
-  font-family: 'Lobster', sans-serif;
+  font-family: "Lobster", sans-serif;
   color: white;
-  text-shadow: 0 3px 5px rgba(0,0,0,0.25);
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
