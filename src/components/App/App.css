@@ -11,7 +11,7 @@ h1 {
   font-family: "Lobster", sans-serif;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 900px) {
   h1 {
     z-index: 999;
     width: 100%;

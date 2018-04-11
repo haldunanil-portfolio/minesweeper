@@ -1,183 +1,182 @@
-div.Tile-col {
+@media screen and (max-width: 991px) {
+  div.Tile-col {
     padding: 0 5px 0 5px !important;
+  }
 }
 
 .Tile {
-    background-color: #ffffff;
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    border-radius: 10px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    box-shadow: 0 2px rgba(0,0,0,0.15);
-    transition: all 0.3s ease-in-out;
-    font-family: "Lato", sans-serif;
-    font-size: 1.5em;
-    cursor: pointer;
+  background-color: #ffffff;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  font-family: "Lato", sans-serif;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
 .Tile-0 {
-    background-color: darkgreen;
-    color: #fff;
+  background-color: darkgreen;
+  color: #fff;
 }
 
 .Tile-1 {
-    background-color: green;
-    color: #fff;
+  background-color: green;
+  color: #fff;
 }
 
 .Tile-2 {
-    background-color: greenyellow;
-    color: #4C5454;
+  background-color: greenyellow;
+  color: #4c5454;
 }
 
 .Tile-3 {
-    background-color: yellow;
-    color: #4C5454;
+  background-color: yellow;
+  color: #4c5454;
 }
 
 .Tile-4 {
-    background-color: #ffcd00;
-    color: #4C5454;
+  background-color: #ffcd00;
+  color: #4c5454;
 }
 
 .Tile-5 {
-    background-color: orange;
-    color: #4C5454;
+  background-color: orange;
+  color: #4c5454;
 }
 
 .Tile-6 {
-    background-color: darkorange;
-    color: #fff;
+  background-color: darkorange;
+  color: #fff;
 }
 
 .Tile-7 {
-    background-color: indianred;
-    color: #fff;
+  background-color: indianred;
+  color: #fff;
 }
 
 .Tile-8 {
-    background-color: #ff3338;
-    color: #fff;
+  background-color: #ff3338;
+  color: #fff;
 }
 
 .Tile-B-true {
-    background-color: #52D1DC;
+  background-color: #52d1dc;
 }
 
 .Tile-B-false {
-    background-color: orangered;
+  background-color: orangered;
 }
 
 .Tile:hover {
-    transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 
 .Tile::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out;
 }
 
 .Tile-content {
-    position: absolute;
-    float: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 img.Tile-bomb-img {
-    width: 100%;
+  width: 100%;
 }
 
-
 .react-contextmenu {
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    color: #373a3c;
-    font-size: 16px;
-    margin: 2px 0 0;
-    min-width: 160px;
-    outline: none;
-    opacity: 0;
-    padding: 5px 0;
-    pointer-events: none;
-    text-align: left;
-    transition: opacity 250ms ease !important;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  color: #373a3c;
+  font-size: 16px;
+  margin: 2px 0 0;
+  min-width: 160px;
+  outline: none;
+  opacity: 0;
+  padding: 5px 0;
+  pointer-events: none;
+  text-align: left;
+  transition: opacity 250ms ease !important;
 }
 
 .react-contextmenu.react-contextmenu--visible {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 9999;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 9999;
 }
 
 .react-contextmenu-item {
-    background: 0 0;
-    border: 0;
-    color: #373a3c;
-	cursor: pointer;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 3px 20px;
-    text-align: inherit;
-    white-space: nowrap;
+  background: 0 0;
+  border: 0;
+  color: #373a3c;
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 3px 20px;
+  text-align: inherit;
+  white-space: nowrap;
 }
 
 .react-contextmenu-item.react-contextmenu-item--active,
 .react-contextmenu-item.react-contextmenu-item--selected {
-    color: #fff;
-    background-color: #20a0ff;
-    border-color: #20a0ff;
-    text-decoration: none;
+  color: #fff;
+  background-color: #20a0ff;
+  border-color: #20a0ff;
+  text-decoration: none;
 }
 
 .react-contextmenu-item.react-contextmenu-item--disabled,
 .react-contextmenu-item.react-contextmenu-item--disabled:hover {
-    background-color: transparent;
-    border-color: rgba(0,0,0,.15);
-    color: #878a8c;
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #878a8c;
 }
 
 .react-contextmenu-item--divider {
-    border-bottom: 1px solid rgba(0,0,0,.15);
-    cursor: inherit;
-    margin-bottom: 3px;
-    padding: 2px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: inherit;
+  margin-bottom: 3px;
+  padding: 2px 0;
 }
 .react-contextmenu-item--divider:hover {
-    background-color: transparent;
-    border-color: rgba(0,0,0,.15);
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 .react-contextmenu-item.react-contextmenu-submenu {
-	padding: 0;
+  padding: 0;
 }
 
 .react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item {
 }
 
-.react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item:after {
-    content: "▶";
-    display: inline-block;
-    position: absolute;
-    right: 7px;
+.react-contextmenu-item.react-contextmenu-submenu
+  > .react-contextmenu-item:after {
+  content: "▶";
+  display: inline-block;
+  position: absolute;
+  right: 7px;
 }
 
 .example-multiple-targets::after {
-    content: attr(data-count);
-    display: block;
+  content: attr(data-count);
+  display: block;
 }
-
-
-
