@@ -17,6 +17,7 @@ class App extends Component {
       sideLength: null,
       difficulty: "",
       board: null,
+      tiles: null,
       isPlaying: null,
       isFinished: false,
       didWin: null,
@@ -25,6 +26,7 @@ class App extends Component {
     this.changeDifficulty = this.changeDifficulty.bind(this);
     this.newGame = this.newGame.bind(this);
     this.tryAgain = this.tryAgain.bind(this);
+    this.updateTileState = this.updateTileState.bind(this);
     this.handleFlipTile = this.handleFlipTile.bind(this);
     this.playMove = this.playMove.bind(this);
     this.onDrawerClose = this.onDrawerClose.bind(this);
@@ -37,13 +39,26 @@ class App extends Component {
   }
 
   newGame(sideLength, numberOfBombs) {
+    // check if this is the first play through
     const firstPlay = this.state.board === null;
 
+    // get new tile states
+    let newCols = [];
+    for (let rowIndex = 0; rowIndex < sideLength; rowIndex++) {
+      let newRows = [];
+      for (let colIndex = 0; colIndex < sideLength; colIndex++) {
+        newRows.push({ revealed: false, flagged: false });
+      }
+      newCols.push(newRows);
+    }
+
+    // reset state
     this.setState({
       sideLength: sideLength,
       board: new Board(sideLength, sideLength, numberOfBombs),
       isPlaying: true,
-      isFinished: false
+      isFinished: false,
+      tiles: newCols
     });
 
     // wait 5 seconds before resetting win/lose status to make sure css for drawer keeps looking pretty
@@ -56,6 +71,12 @@ class App extends Component {
 
   tryAgain() {
     this.newGame(this.state.sideLength, this.state.board.numberOfBombs);
+  }
+
+  updateTileState(rowIndex, colIndex, key, newState) {
+    let currentTiles = this.state.tiles;
+    currentTiles[rowIndex][colIndex][key] = newState;
+    this.setState({ tiles: currentTiles });
   }
 
   handleFlipTile(rowIndex, colIndex) {
@@ -138,6 +159,8 @@ class App extends Component {
           board={this.state.board}
           playMove={this.playMove}
           didWin={this.state.didWin}
+          tiles={this.state.tiles}
+          updateTile={this.updateTileState}
         />
         <ReactDrawer
           open={this.state.isFinished}

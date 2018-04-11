@@ -23,6 +23,8 @@ class GameGrid extends Component {
               rowIndex={rowIndex}
               colIndex={colIndex}
               didWin={this.props.didWin}
+              tileState={this.props.tiles[rowIndex][colIndex]}
+              updateTile={this.props.updateTile}
             />
           </Col>
         );
