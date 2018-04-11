@@ -16,9 +16,11 @@ class App extends Component {
     this.state = {
       sideLength: null,
       difficulty: "",
+      numberOfBombs: 0,
       board: null,
       tiles: null,
       isPlaying: null,
+      isFirstMove: false,
       isFinished: false,
       didWin: null,
       modalIsOpen: false
@@ -55,8 +57,10 @@ class App extends Component {
     // reset state
     this.setState({
       sideLength: sideLength,
+      numberOfBombs: numberOfBombs,
       board: new Board(sideLength, sideLength, numberOfBombs),
       isPlaying: true,
+      isFirstMove: true,
       isFinished: false,
       tiles: newCols
     });
@@ -80,7 +84,31 @@ class App extends Component {
   }
 
   handleFlipTile(rowIndex, colIndex) {
+    // get the existing board
     let newBoard = this.state.board;
+
+    // if this is the first move, make sure that the tile clicked on doesn't have a bomb
+    if (this.state.isFirstMove) {
+      // check if we should be looping until we get a board where the tile that's clicked on first isn't a bomb
+      let loop = newBoard.bombBoard[rowIndex][colIndex] === "B";
+
+      // create a resetBoard and begin looping if loop === true
+      let resetBoard;
+      while (loop === true) {
+        resetBoard = new Board(this.state.sideLength, this.state.sideLength, this.state.numberOfBombs);
+        loop = resetBoard.bombBoard[rowIndex][colIndex] === "B";
+      }
+
+      // if resetBoard is not undefined, then set it equal to the newBoard
+      if (resetBoard) {
+        newBoard = resetBoard;
+      }
+
+      // set state to no longer be first move
+      this.setState({ isFirstMove: false });
+    }
+
+    // flip newBoard's file and set the board state
     newBoard.flipTile(rowIndex, colIndex);
     this.setState({
       board: newBoard
