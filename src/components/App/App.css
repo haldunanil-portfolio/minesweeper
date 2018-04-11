@@ -82,11 +82,11 @@ div.react-drawer-drawer {
 }
 
 .isWon-true {
-  background-color: limegreen;
+  background: linear-gradient(to right, #39e939, limegreen);
 }
 
 .isWon-false {
-  background-color: orangered;
+  background: linear-gradient(to right, #ff5718 , #ff4500);
 }
 
 h2 {
