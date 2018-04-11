@@ -63,7 +63,7 @@ class Tile extends Component {
         >
           <div
             className={"Tile Tile-" + addClass}
-            onClick={this.handleFlipTile}
+            onClick={this.props.tileState.flagged ? console.log("You already flagged this gurl.") : this.handleFlipTile }
           >
             <div className="Tile-content">{tileContent}</div>
           </div>
